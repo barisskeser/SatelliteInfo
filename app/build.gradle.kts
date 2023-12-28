@@ -75,8 +75,7 @@ dependencies {
 
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
-
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.hilt.compiler)
-
+    implementation(libs.kotlinx.serialization)
 }
