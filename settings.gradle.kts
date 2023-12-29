@@ -17,3 +17,4 @@ rootProject.name = "SatelliteInfo"
 include(":app")
 include(":feature:satellites")
 include(":feature:satelliteDetail")
+include(":navigation")
