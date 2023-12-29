@@ -14,6 +14,8 @@ daggerHilt = "2.48"
 kotlinxSerialization = "1.5.0"
 appcompat = "1.6.1"
 material = "1.11.0"
+navigation = "2.7.6"
+hiltNavigationCompose = "1.1.0"
 
 [libraries]
 #ANDROIDX
@@ -38,6 +40,9 @@ androidx-room-compiler = { group = "androidx.room", name = "room-compiler", vers
 #DAGGER-HILT
 dagger-hilt = { group = "com.google.dagger", name = "hilt-android", version.ref = "daggerHilt" }
 dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "daggerHilt" }
+androidx-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
+#NAVIGATION
+navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 #TEST
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidJunit = { group = "androidx.test.ext", name = "junit", version.ref = "androidJunit" }
