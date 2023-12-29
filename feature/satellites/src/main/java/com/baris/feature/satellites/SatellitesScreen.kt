@@ -9,7 +9,8 @@ import androidx.compose.runtime.Composable
 
 @Composable
 fun SatellitesScreen(
-    viewModel: SatellitesViewModel
+    viewModel: SatellitesViewModel,
+    onSatelliteClick: (Int) -> Unit
 ) {
 
 }
