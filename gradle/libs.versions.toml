@@ -12,6 +12,8 @@ room = "2.6.1"
 kspPlugin = "1.8.20-1.0.10"
 daggerHilt = "2.44"
 kotlinxSerialization = "1.5.0"
+appcompat = "1.6.1"
+material = "1.11.0"
 
 [libraries]
 #ANDROIDX
@@ -41,6 +43,8 @@ junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidJunit = { group = "androidx.test.ext", name = "junit", version.ref = "androidJunit" }
 espressoCore = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-compose-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

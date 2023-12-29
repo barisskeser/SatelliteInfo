@@ -15,4 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "SatelliteInfo"
 include(":app")
- 
+include(":feature:satellites")
