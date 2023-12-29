@@ -5,5 +5,5 @@ package com.baris.data.model
  * @author Barış Keser
  */
 data class PositionListDto(
-    val list: List<PositionListItemDto>
+    val list: List<SatellitePositionDto>
 )

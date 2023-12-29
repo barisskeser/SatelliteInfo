@@ -6,8 +6,6 @@ package com.baris.data.model
  */
 data class SatelliteDto(
     val id: Int,
-    val costPerLaunch: Long,
-    val firstFlight: String,
-    val height: Int,
-    val mass: Long
+    val active: Boolean,
+    val name: String
 )

@@ -1,11 +1,11 @@
-package com.baris.data.model
+package com.baris.domain.model
 
 /**
  * Created on 29.12.2023.
  * @author Barış Keser
  */
-data class SatelliteItemDto(
+data class Satellite(
     val id: Int,
-    val active: Boolean,
+    val isActive: Boolean,
     val name: String
 )
