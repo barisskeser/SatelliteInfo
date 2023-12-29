@@ -2,6 +2,7 @@ package com.baris.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.compose.NavHost
 
 /**
  * Created on 29.12.2023.
@@ -12,7 +13,7 @@ import androidx.navigation.compose.rememberNavController
 fun NavHost() {
     val navController = rememberNavController()
 
-    androidx.navigation.compose.NavHost(
+    NavHost(
         navController = navController,
         startDestination = Routes.SATELLITES
     ) {
