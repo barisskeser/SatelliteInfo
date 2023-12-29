@@ -67,5 +67,9 @@ dependencies {
 
     implementation(libs.navigation.compose)
 
+    implementation(project(":common"))
+    implementation(project(":feature:satellites"))
+    implementation(project(":feature:satelliteDetail"))
+
     implementation(libs.androidx.hilt.navigation.compose)
 }
