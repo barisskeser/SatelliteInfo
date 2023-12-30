@@ -36,22 +36,22 @@ class FileDataSourceImpl @Inject constructor(
         withContext(dispatcher) {
             assetManager.open(SATELLITE_DETAIL)
                 .use<InputStream, List<SatelliteDetailDto>>(json::decodeFromStream).find {
-                it.id == id
-            }
+                    it.id == id
+                }
         }
 
     override suspend fun search(query: String): List<SatelliteDto> = withContext(dispatcher) {
         assetManager.open(SATELLITE_LIST)
             .use<InputStream, List<SatelliteDto>>(json::decodeFromStream).filter {
-            it.name.lowercase().contains(query.lowercase())
-        }
+                it.name.lowercase().contains(query.lowercase())
+            }
     }
 
     override suspend fun getSatellitePositions(id: Int): SatellitePositionDto? =
         withContext(dispatcher) {
             assetManager.open(POSITIONS)
                 .use<InputStream, PositionListDto>(json::decodeFromStream).list.find {
-                it.id == id
-            }
+                    it.id == id
+                }
         }
 }
