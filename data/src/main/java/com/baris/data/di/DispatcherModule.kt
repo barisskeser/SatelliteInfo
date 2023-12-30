@@ -5,7 +5,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kotlinx.coroutines.Dispatchers
-import javax.inject.Singleton
+import javax.inject.Qualifier
 
 /**
  * Created on 30.12.2023.
@@ -16,8 +16,12 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object DispatcherModule {
 
+    @IoDispatcher
     @Provides
-    @Singleton
     fun provideDispatchersIO() = Dispatchers.IO
 
 }
+
+@Retention(AnnotationRetention.RUNTIME)
+@Qualifier
+annotation class IoDispatcher

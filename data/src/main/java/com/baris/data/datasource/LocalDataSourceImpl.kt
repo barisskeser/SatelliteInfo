@@ -10,12 +10,12 @@ import javax.inject.Inject
  */
 class LocalDataSourceImpl @Inject constructor(
     private val satellitesDatabase: SatellitesDatabase
-) : LocalDataSource{
+) : LocalDataSource {
     override suspend fun getSatelliteDetail(id: Int): SatelliteDetailEntity? {
         return satellitesDatabase.getSatelliteDao().getSatelliteDetail(id)
     }
 
     override suspend fun saveSatelliteDetail(satelliteDetailEntity: SatelliteDetailEntity) {
-        satellitesDatabase.getSatelliteDao().saveSatelliteDetail(satelliteDetailEntity)
+        return satellitesDatabase.getSatelliteDao().saveSatelliteDetail(satelliteDetailEntity)
     }
 }

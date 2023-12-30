@@ -5,8 +5,6 @@ import com.baris.data.model.PositionListDto
 import com.baris.data.model.SatelliteDetailDto
 import com.baris.data.model.SatelliteDto
 import com.baris.data.model.SatellitePositionDto
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.withContext
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
 import java.io.InputStream
@@ -18,8 +16,7 @@ import javax.inject.Inject
  */
 class FileDataSourceImpl @Inject constructor(
     private val assetManager: AssetManager,
-    private val json: Json,
-    private val dispatcher: CoroutineDispatcher
+    private val json: Json
 ) : FileDataSource {
 
     companion object {
@@ -28,30 +25,28 @@ class FileDataSourceImpl @Inject constructor(
         const val POSITIONS = "positions.json"
     }
 
-    override suspend fun getSatelliteList(): List<SatelliteDto> = withContext(dispatcher) {
-        assetManager.open(SATELLITE_LIST).use(json::decodeFromStream)
+    override suspend fun getSatelliteList(): List<SatelliteDto> {
+        return assetManager.open(SATELLITE_LIST).use(json::decodeFromStream)
     }
 
-    override suspend fun getSatelliteDetail(id: Int): SatelliteDetailDto? =
-        withContext(dispatcher) {
-            assetManager.open(SATELLITE_DETAIL)
-                .use<InputStream, List<SatelliteDetailDto>>(json::decodeFromStream).find {
-                    it.id == id
-                }
-        }
+    override suspend fun getSatelliteDetail(id: Int): SatelliteDetailDto? {
+        return assetManager.open(SATELLITE_DETAIL)
+            .use<InputStream, List<SatelliteDetailDto>>(json::decodeFromStream).find {
+                it.id == id
+            }
+    }
 
-    override suspend fun search(query: String): List<SatelliteDto> = withContext(dispatcher) {
-        assetManager.open(SATELLITE_LIST)
+    override suspend fun search(query: String): List<SatelliteDto> {
+        return assetManager.open(SATELLITE_LIST)
             .use<InputStream, List<SatelliteDto>>(json::decodeFromStream).filter {
                 it.name.lowercase().contains(query.lowercase())
             }
     }
 
-    override suspend fun getSatellitePositions(id: Int): SatellitePositionDto? =
-        withContext(dispatcher) {
-            assetManager.open(POSITIONS)
-                .use<InputStream, PositionListDto>(json::decodeFromStream).list.find {
-                    it.id == id
-                }
-        }
+    override suspend fun getSatellitePositions(id: Int): SatellitePositionDto? {
+        return assetManager.open(POSITIONS)
+            .use<InputStream, PositionListDto>(json::decodeFromStream).list.find {
+                it.id == id
+            }
+    }
 }
