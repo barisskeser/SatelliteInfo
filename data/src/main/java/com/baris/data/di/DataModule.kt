@@ -2,6 +2,8 @@ package com.baris.data.di
 
 import android.content.Context
 import android.content.res.AssetManager
+import androidx.room.Room
+import com.baris.data.room.SatellitesDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,6 +30,16 @@ object DataModule {
     @Singleton
     fun provideAssetsManager(@ApplicationContext context: Context): AssetManager {
         return context.assets
+    }
+
+    @Provides
+    @Singleton
+    fun provideSatelliteDatabase(@ApplicationContext context: Context): SatellitesDatabase {
+        return Room.databaseBuilder(
+            context,
+            SatellitesDatabase::class.java,
+            SatellitesDatabase.NAME
+        ).build()
     }
 
 }
