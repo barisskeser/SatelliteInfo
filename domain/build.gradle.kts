@@ -45,6 +45,7 @@ dependencies {
     androidTestImplementation(libs.espressoCore)
 
     implementation(project(":core"))
+    implementation(project(":common"))
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.hilt.compiler)
 }
