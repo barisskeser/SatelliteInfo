@@ -4,6 +4,7 @@ import com.baris.data.model.PositionDto
 import com.baris.data.model.SatelliteDetailDto
 import com.baris.data.model.SatelliteDto
 import com.baris.data.model.SatellitePositionDto
+import com.baris.data.room.entity.SatelliteDetailEntity
 import com.baris.domain.model.Position
 import com.baris.domain.model.Satellite
 import com.baris.domain.model.SatelliteDetail
@@ -43,5 +44,25 @@ fun SatellitePositionDto.toDomain(): SatellitePosition {
     return SatellitePosition(
         id = this.id,
         positions = this.positions.map { it.toDomain() }
+    )
+}
+
+fun SatelliteDetailDto.toEntity(): SatelliteDetailEntity {
+    return SatelliteDetailEntity(
+        id = this.id,
+        costPerLaunch = this.costPerLaunch,
+        firstFlight = this.firstFlight,
+        height = this.height,
+        mass = this.mass
+    )
+}
+
+fun SatelliteDetailEntity.toDomain(): SatelliteDetail {
+    return SatelliteDetail(
+        id = this.id,
+        costPerLaunch = this.costPerLaunch,
+        firstFlight = this.firstFlight,
+        height = this.height,
+        mass = this.mass
     )
 }
