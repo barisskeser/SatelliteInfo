@@ -32,14 +32,15 @@ fun SatelliteItem(
     modifier: Modifier = Modifier,
     satellite: Satellite,
     isLast: Boolean,
-    onClick: ((Int) -> Unit)? = null
+    onClick: ((Int, String) -> Unit)? = null
 ) {
     Column(
         modifier = modifier
             .fillMaxWidth()
             .wrapContentHeight()
             .clickable {
-                onClick?.invoke(satellite.id)
+                if(satellite.isActive)
+                    onClick?.invoke(satellite.id, satellite.name)
             },
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

@@ -9,5 +9,5 @@ import androidx.annotation.Nullable
 sealed interface IResult<out T> {
     data object Loading: IResult<Nothing>
     data class Success<T>(val data: T): IResult<T>
-    data class Error<T>(val error: ResultError): IResult<T>
+    data class Error(val error: ResultError): IResult<Nothing>
 }

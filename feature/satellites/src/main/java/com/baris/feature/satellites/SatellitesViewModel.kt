@@ -51,6 +51,7 @@ class SatellitesViewModel @Inject constructor(
                 }.onSuccess { satelliteList ->
                     updateUiState(State.Success(satelliteList))
                 }.onError { resultError ->
+                    updateUiState(State.Empty)
                     sendUiEvent(Event.ShowError(resultError))
                 }
             }
@@ -75,6 +76,7 @@ class SatellitesViewModel @Inject constructor(
                 lastSearchQuery = query
                 updateUiState(State.Success(searchResult))
             }.onError { resultError ->
+                updateUiState(State.Empty)
                 sendUiEvent(Event.ShowError(resultError))
             }
         }
