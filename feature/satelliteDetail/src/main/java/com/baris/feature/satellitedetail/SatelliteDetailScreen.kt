@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -32,12 +33,23 @@ fun SatelliteDetailScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
     val event by viewModel.event.collectAsStateWithLifecycle(initialValue = SatelliteDetailViewModel.Event.Init)
 
+    SatelliteDetailScreenContent(
+        state = state,
+        event = event
+    )
+}
+
+@Composable
+fun SatelliteDetailScreenContent(
+    state: SatelliteDetailViewModel.State,
+    event: SatelliteDetailViewModel.Event
+) {
     when (event) {
         SatelliteDetailViewModel.Event.Init -> {}
         is SatelliteDetailViewModel.Event.ShowError -> {
             SatellitesDialog(
                 title = stringResource(id = R.string.warning),
-                text = (event as SatelliteDetailViewModel.Event.ShowError).resultError.message
+                text = event.resultError.message
             )
         }
     }
@@ -49,7 +61,7 @@ fun SatelliteDetailScreen(
         }
 
         is SatelliteDetailViewModel.State.Success -> {
-            SatelliteDetail(satellite = (state as SatelliteDetailViewModel.State.Success).data)
+            SatelliteDetail(satellite = state.data)
         }
     }
 }
@@ -96,4 +108,24 @@ fun SatelliteDetail(satellite: SatelliteDetailUiModel) {
             Text(text = stringResource(id = R.string.position, satellite.posX, satellite.posY))
         }
     }
+}
+
+@Preview
+@Composable
+fun SatelliteDetailScreenPreview() {
+    val mock = SatelliteDetailUiModel(
+        id = 1,
+        name = "Starship - 1",
+        costPerLaunch = 4124124L,
+        firstFlight = "01.01.2024",
+        height = 330,
+        mass = 324324,
+        posX = 0.4389438493,
+        posY = 0.4324234432
+    )
+
+    SatelliteDetailScreenContent(
+        state = SatelliteDetailViewModel.State.Success(mock),
+        event = SatelliteDetailViewModel.Event.Init
+    )
 }
