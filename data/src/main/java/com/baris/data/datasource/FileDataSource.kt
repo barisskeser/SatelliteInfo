@@ -1,7 +1,5 @@
 package com.baris.data.datasource
 
-import com.baris.data.model.PositionDto
-import com.baris.data.model.PositionListDto
 import com.baris.data.model.SatelliteDetailDto
 import com.baris.data.model.SatelliteDto
 import com.baris.data.model.SatellitePositionDto

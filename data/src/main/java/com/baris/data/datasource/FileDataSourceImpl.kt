@@ -5,6 +5,7 @@ import com.baris.data.model.PositionListDto
 import com.baris.data.model.SatelliteDetailDto
 import com.baris.data.model.SatelliteDto
 import com.baris.data.model.SatellitePositionDto
+import kotlinx.serialization.ExperimentalSerializationApi
 import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.decodeFromStream
 import java.io.InputStream
@@ -14,6 +15,7 @@ import javax.inject.Inject
  * Created on 30.12.2023.
  * @author Barış Keser
  */
+@OptIn(ExperimentalSerializationApi::class)
 class FileDataSourceImpl @Inject constructor(
     private val assetManager: AssetManager,
     private val json: Json

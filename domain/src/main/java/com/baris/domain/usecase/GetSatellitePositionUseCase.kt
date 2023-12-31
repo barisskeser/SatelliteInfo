@@ -1,13 +1,10 @@
 package com.baris.domain.usecase
 
-import android.util.Log
 import com.baris.common.Constants
 import com.baris.core.IResult
 import com.baris.core.ResultError
 import com.baris.domain.model.Position
-import com.baris.domain.model.SatellitePosition
 import com.baris.domain.repository.SatelliteRepository
-import kotlinx.coroutines.awaitCancellation
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch

@@ -1,6 +1,5 @@
 package com.baris.feature.satellitedetail
 
-import android.widget.Space
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -35,7 +34,10 @@ fun SatelliteDetailScreen(
     when (event) {
         SatelliteDetailViewModel.Event.Init -> {}
         is SatelliteDetailViewModel.Event.ShowError -> {
-            SatellitesDialog(title = "Uyarı!", text = (event as SatelliteDetailViewModel.Event.ShowError).resultError.message)
+            SatellitesDialog(
+                title = "Uyarı!",
+                text = (event as SatelliteDetailViewModel.Event.ShowError).resultError.message
+            )
         }
     }
 
