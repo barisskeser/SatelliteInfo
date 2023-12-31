@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.baris.feature.satellitedetail"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24

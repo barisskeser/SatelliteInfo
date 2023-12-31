@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.baris.satelliteinfo"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.baris.satelliteinfo"

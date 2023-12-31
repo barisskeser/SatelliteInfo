@@ -8,7 +8,7 @@ plugins {
 
 android {
     namespace = "com.baris.feature.satellites"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24
@@ -70,6 +70,7 @@ dependencies {
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.hilt.compiler)
 
+    implementation(project(":data"))
     implementation(project(":domain"))
     implementation(project(":core"))
 }
