@@ -18,9 +18,9 @@ fun NavHost() {
         startDestination = Routes.SATELLITES
     ) {
         satellitesScreen(
-            onSatelliteClick = { satelliteId ->
+            onSatelliteClick = { satelliteId, satelliteName ->
                 navController.navigate(
-                    route = "${Routes.SATELLITE_DETAIL}/$satelliteId"
+                    route = "${Routes.SATELLITE_DETAIL}/$satelliteId/$satelliteName"
                 )
             }
         )

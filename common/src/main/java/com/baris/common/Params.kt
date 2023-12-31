@@ -6,4 +6,5 @@ package com.baris.common
  */
 object Params {
     const val SATELLITE_ID = "satelliteId"
+    const val SATELLITE_NAME = "satelliteName"
 }
