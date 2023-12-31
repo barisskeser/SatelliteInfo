@@ -1,4 +1,4 @@
-package com.baris.components
+package com.baris.core.components
 
 /**
  * Created on 31.12.2023.
