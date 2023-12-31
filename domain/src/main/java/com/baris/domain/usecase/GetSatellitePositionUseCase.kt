@@ -28,14 +28,11 @@ class GetSatellitePositionUseCase @Inject constructor(
         val bound = satellites?.positions?.size ?: 0
         while (true) {
             val position = satellites?.positions?.getOrNull(index % bound)
-            Log.d("TAG", "invoke: $position")
             emit(IResult.Success(position))
             index++
             delay(3000L)
         }
-        awaitCancellation()
     }.catch {
-        Log.d("TAG", "invoke: $it")
         emit(IResult.Error(ResultError(it.localizedMessage ?: Constants.DEFAULT_ERROR_MESSAGE)))
     }
 }
