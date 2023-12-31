@@ -22,7 +22,7 @@ class GetSatelliteListUseCase @Inject constructor(
         val satellites = repository.getSatelliteList()
         emit(IResult.Success(satellites))
     }.catch {
-        emit(IResult.Error(ResultError(it.localizedMessage ?: Constants.DEFAULT_ERROR_MESSAGE, it)))
+        emit(IResult.Error(ResultError(it.localizedMessage ?: Constants.DEFAULT_ERROR_MESSAGE)))
     }
 
 }
