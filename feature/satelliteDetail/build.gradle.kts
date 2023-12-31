@@ -69,4 +69,8 @@ dependencies {
 
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.hilt.compiler)
+
+    implementation(project(":domain"))
+    implementation(project(":core"))
+    implementation(project(":common"))
 }
