@@ -5,6 +5,5 @@ package com.baris.core
  * @author Barış Keser
  */
 data class ResultError(
-    val message: String,
-    val throwable: Throwable? = null,
+    val message: String
 )
