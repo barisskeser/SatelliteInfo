@@ -38,6 +38,7 @@ fun SatelliteItem(
         modifier = modifier
             .fillMaxWidth()
             .wrapContentHeight()
+            .padding(top = 8.dp)
             .clickable {
                 if(satellite.isActive)
                     onClick?.invoke(satellite.id, satellite.name)
@@ -70,7 +71,7 @@ fun SatelliteItem(
             }
         }
         if(!isLast)
-            Divider(modifier = Modifier.padding(vertical = 8.dp))
+            Divider(modifier = Modifier.padding(top = 8.dp))
     }
 }
 
