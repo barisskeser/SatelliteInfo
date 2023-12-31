@@ -70,7 +70,6 @@ dependencies {
     implementation(libs.dagger.hilt)
     ksp(libs.dagger.hilt.compiler)
 
-    implementation(project(":data"))
     implementation(project(":domain"))
     implementation(project(":core"))
 }
