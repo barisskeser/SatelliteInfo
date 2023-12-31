@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.baris.core.components.LoadingProgress
@@ -29,12 +30,28 @@ fun SatellitesScreen(
     val state by viewModel.state.collectAsStateWithLifecycle()
     val event by viewModel.event.collectAsStateWithLifecycle(SatellitesViewModel.Event.Init)
 
+    SatellitesScreenContent(
+        state = state,
+        event = event,
+        onQueryChanged = viewModel::onQueryChanged,
+        onSatelliteClick = onSatelliteClick
+    )
+}
+
+@Composable
+fun SatellitesScreenContent(
+    state: SatellitesViewModel.State,
+    event: SatellitesViewModel.Event,
+    onQueryChanged: (String) -> Unit,
+    onSatelliteClick: (Int, String) -> Unit
+) {
+
     when (event) {
         SatellitesViewModel.Event.Init -> {}
         is SatellitesViewModel.Event.ShowError -> {
             SatellitesDialog(
                 title = stringResource(id = R.string.warning),
-                text = (event as SatellitesViewModel.Event.ShowError).resultError.message
+                text = event.resultError.message
             )
         }
     }
@@ -45,7 +62,7 @@ fun SatellitesScreen(
         SearchBar(
             modifier = Modifier.padding(16.dp),
             placeHolder = stringResource(id = R.string.search),
-            onQueryChange = viewModel::onQueryChanged
+            onQueryChange = onQueryChanged
         )
 
         when (state) {
@@ -56,13 +73,12 @@ fun SatellitesScreen(
 
             is SatellitesViewModel.State.Success -> {
                 SatelliteList(
-                    satelliteList = (state as SatellitesViewModel.State.Success).data,
+                    satelliteList = state.data,
                     onSatelliteClick = onSatelliteClick
                 )
             }
         }
     }
-
 }
 
 @Composable
@@ -81,4 +97,29 @@ fun SatelliteList(
             )
         }
     }
+}
+
+@Preview
+@Composable
+fun SatellitesScreenPreview() {
+    val mockList = listOf(
+        Satellite(
+            1, true, "Satellite-1"
+        ),
+        Satellite(
+            2, true, "Satellite-2"
+        ),
+        Satellite(
+            3, false, "Satellite-3"
+        ),
+        Satellite(
+            4, true, "Satellite-4"
+        )
+    )
+    SatellitesScreenContent(
+        state = SatellitesViewModel.State.Success(mockList),
+        event = SatellitesViewModel.Event.Init,
+        onQueryChanged = {},
+        onSatelliteClick = { _, _ -> }
+    )
 }
