@@ -27,11 +27,11 @@ class SatelliteRepositoryImpl @Inject constructor(
     }
 
     override suspend fun getSatelliteDetail(id: Int): SatelliteDetail? = withContext(dispatcher) {
-        localDataSource.getSatelliteDetail(id)?.toDomain() ?: kotlin.run {
-            fileDataSource.getSatelliteDetail(id)?.also {
+        localDataSource.getSatelliteDetail(id)?.toDomain()
+            ?: fileDataSource.getSatelliteDetail(id)?.also {
                 localDataSource.saveSatelliteDetail(it.toEntity())
             }?.toDomain()
-        }
+
     }
 
     override suspend fun search(query: String): List<Satellite> = withContext(dispatcher) {
