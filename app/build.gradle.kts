@@ -77,4 +77,5 @@ dependencies {
     ksp(libs.dagger.hilt.compiler)
 
     implementation(project(":navigation"))
+    implementation(project(":data"))
 }
