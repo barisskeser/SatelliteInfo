@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.baris.core.components.LoadingProgress
@@ -32,7 +33,7 @@ fun SatellitesScreen(
         SatellitesViewModel.Event.Init -> {}
         is SatellitesViewModel.Event.ShowError -> {
             SatellitesDialog(
-                title = "Uyarı!",
+                title = stringResource(id = R.string.warning),
                 text = (event as SatellitesViewModel.Event.ShowError).resultError.message
             )
         }
@@ -43,7 +44,7 @@ fun SatellitesScreen(
     ) {
         SearchBar(
             modifier = Modifier.padding(16.dp),
-            placeHolder = "Search",
+            placeHolder = stringResource(id = R.string.search),
             onQueryChange = viewModel::onQueryChanged
         )
 

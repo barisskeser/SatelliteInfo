@@ -12,6 +12,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -35,7 +36,7 @@ fun SatelliteDetailScreen(
         SatelliteDetailViewModel.Event.Init -> {}
         is SatelliteDetailViewModel.Event.ShowError -> {
             SatellitesDialog(
-                title = "Uyarı!",
+                title = stringResource(id = R.string.warning),
                 text = (event as SatelliteDetailViewModel.Event.ShowError).resultError.message
             )
         }
@@ -73,7 +74,7 @@ fun SatelliteDetail(satellite: SatelliteDetailUiModel) {
         Spacer(modifier = Modifier.height(32.dp))
         Row {
             Text(
-                text = "Height/Mass:",
+                text = stringResource(id = R.string.height_and_mass),
                 fontWeight = FontWeight.Bold
             )
             Text(text = "${satellite.height}/${satellite.mass}")
@@ -81,7 +82,7 @@ fun SatelliteDetail(satellite: SatelliteDetailUiModel) {
         Spacer(modifier = Modifier.height(8.dp))
         Row {
             Text(
-                text = "Cost:",
+                text = stringResource(id = R.string.cost),
                 fontWeight = FontWeight.Bold
             )
             Text(text = satellite.costPerLaunch.toString())
@@ -89,10 +90,10 @@ fun SatelliteDetail(satellite: SatelliteDetailUiModel) {
         Spacer(modifier = Modifier.height(8.dp))
         Row {
             Text(
-                text = "Last Position:",
+                text = stringResource(id = R.string.last_position),
                 fontWeight = FontWeight.Bold
             )
-            Text(text = "(${satellite.posX}, ${satellite.posY})")
+            Text(text = stringResource(id = R.string.position, satellite.posX, satellite.posY))
         }
     }
 }

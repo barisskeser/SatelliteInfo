@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="warning">Uyarı!</string>
+    <string name="height_and_mass">Height/Mass:</string>
+    <string name="cost">Cost:</string>
+    <string name="last_position">Last Position:</string>
+    <string name="position">(%s, %s)</string>
+</resources>
