@@ -56,7 +56,9 @@ fun SatelliteItem(
 
             Spacer(modifier = Modifier.width(24.dp))
 
-            Column{
+            Column(
+                modifier = Modifier.fillMaxWidth(0.3f)
+            ){
                 val textColor = if(satellite.isActive) Color.Black else Color.LightGray
                 Text(
                     text = satellite.name,
